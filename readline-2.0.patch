@@ -1,0 +1,19 @@
+This patch corrects a config mistake in GNU readline-2.0 that causes
+it to mishandle signals, resulting in problems with ftp's ^C handling.
+
+
+*** signals.c.dist	Wed Aug  3 11:25:57 1994
+--- signals.c	Wed Aug 14 13:23:30 1996
+***************
+*** 21,26 ****
+--- 21,30 ----
+     675 Mass Ave, Cambridge, MA 02139, USA. */
+  #define READLINE_LIBRARY
+  
++ #if defined (HAVE_CONFIG_H)
++ #  include "config.h"
++ #endif
++ 
+  #include <stdio.h>
+  #include <sys/types.h>
+  #include <fcntl.h>
