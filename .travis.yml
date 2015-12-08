@@ -1,6 +1,11 @@
-language: c
-compiler: gcc
 sudo: false
+language: c
+os:
+  - linux
+  - osx
+compiler:
+  - gcc
+  - clang
 addons: 
   apt: 
     packages: 
