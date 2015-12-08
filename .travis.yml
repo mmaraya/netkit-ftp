@@ -1,0 +1,10 @@
+language: c
+compiler: gcc
+sudo: false
+addons: 
+  apt: 
+    packages: 
+      - libncurses5-dev
+script: 
+  - ./configure
+  - make
