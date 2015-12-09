@@ -8,7 +8,7 @@ void setdebug(int argc, char *argv[]);
 void setform(void);
 void setglob(void);
 void sethash(void);
-void setmode(void);
+void setftmode(void);
 void setport(void);
 void setprompt(void);
 void setstruct(void);

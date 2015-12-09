@@ -429,7 +429,7 @@ settenex(void)
  */
 /*ARGSUSED*/
 void
-setmode(void)
+setftmode(void)
 {
 	printf("We only support %s mode, sorry.\n", modename);
 	code = -1;

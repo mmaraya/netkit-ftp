@@ -149,7 +149,7 @@ struct cmd cmdtab[] = {
 	{ "mget",	mgethelp,	1, 1, 1, mget, NULL, NULL },
 	{ "mkdir",	mkdirhelp,	0, 1, 1, makedir, NULL, NULL },
 	{ "mls",	mlshelp,	1, 1, 1, mls, NULL, NULL },
-	{ "mode",	modehelp,	0, 1, 1, NULL, setmode, NULL },
+	{ "mode",	modehelp,	0, 1, 1, NULL, setftmode, NULL },
 	{ "modtime",	modtimehelp,	0, 1, 1, modtime, NULL, NULL },
 	{ "mput",	mputhelp,	1, 1, 1, mput, NULL, NULL },
 	{ "newer",	newerhelp,	1, 1, 1, newer, NULL, NULL },
