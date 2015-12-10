@@ -16,7 +16,7 @@ Precompiled binaries can be downloaded from https://github.com/mmaraya/netkit-ft
 License
 -------
 
-Please see the file named LICENSE. 
+Please see the file named [LICENSE](LICENSE).
 
 Issues
 ------
