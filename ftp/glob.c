@@ -59,7 +59,10 @@ char glob_rcsid[] =
 #define	TRIM 0177
 #define	eq(a,b)		(strcmp(a, b)==0)
 
+#ifndef ARG_MAX
 #define	ARG_MAX		(sysconf(_SC_ARG_MAX))
+#endif /* ARG_MAX */
+
 #define	GAVSIZ		(ARG_MAX/6)
 #define	isdir(d)	((d.st_mode & S_IFMT) == S_IFDIR)
 
