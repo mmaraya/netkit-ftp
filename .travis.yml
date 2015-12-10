@@ -12,7 +12,7 @@ addons:
       - libncurses5-dev
   coverity_scan:
     project:
-      name: "mmaraya/port-mirroring"
+      name: "mmaraya/netkit-ftp"
       description: "Classic file transfer client"
     notification_email: mike.maraya@gmail.com
     build_command: "./configure && make"
