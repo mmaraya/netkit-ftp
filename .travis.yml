@@ -12,10 +12,12 @@ addons:
       - libncurses5-dev
   coverity_scan:
     project:
-      name: "mmaraya/netkit-ftp"
-      description: "Classic file transfer client"
+      name: mmaraya/netkit-ftp
+      version: 0.17
+      description: Original file transfer protocol client
     notification_email: mike.maraya@gmail.com
-    build_command: "./configure && make"
+    build_command_prepend: ./configure
+    build_command: make
     branch_pattern: coverity_scan
 script: 
   - ./configure

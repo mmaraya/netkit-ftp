@@ -1,3 +1,5 @@
 MCONFIG
 ftp/ftp
 *.o
+cov-int
+netkit-ftp.tgz
