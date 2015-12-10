@@ -10,6 +10,16 @@ addons:
   apt: 
     packages: 
       - libncurses5-dev
+  coverity_scan:
+    project:
+      name: "mmaraya/port-mirroring"
+      description: "Classic file transfer client"
+    notification_email: mike.maraya@gmail.com
+    build_command: "./configure && make"
+    branch_pattern: coverity_scan
 script: 
   - ./configure
   - make
+env:
+  global:
+  - secure: r1l7faVXDH3cMerwTQoS5XnGwzuJVih+NCsBcBY2YIFkDyT0rJ3d9GwE7L/wE1ujqyDpbMdEQgwkyjTVEiiv4YtLrc4zEAICpBvnDHMIwsgHrX7GD0nH0Y8lMOOK8Xyh8U7jRzoEYf1Y3kaZYeI7JLj1ghdFW6Sh4XdEC6qFw7sSGBLi7tspPurhOlJvpO3OKJ7f+XQWMBuwIPn6JkCmMv6DigBHP9lHbBthHxoM7uILNxUG10AAhrDpCyBdo2QKhj6G+2hM0RPfSWFTe42asidUM9Uwggw7oAWnalxMtPZRuOhF5ZMGzqRE1kG4rJUuIYCi/PgPNtDEMTAvUoSCVNG1CCnuxvFX3NZ+DYPwKNty+bz2I9mnYK8WCa1FflYlaSGE5O1iJ3OHUWxm7bKjJ7wjF83T5O8rPT6RXGaf/1//iLkTRuZ5BsGcc3QjYZlGdD5Wvp6zxAilK15eHAnzAel92DGasZN/RzEMet7eCw0N1mrJVR2R4dFvM5puX96x9H5Vr71FeeuyFMhAfeMA0L0OqSLK+vKlMQwQhmyh+HSeNGo8FbXfUTUgu4GHlnxX5hbsgye55qa4rybA6tjQ2B+61p4/rHkIfagZVnDyf6XlZLgErUIsJGqQIpMWkdU0dmEqKbSBjXFYCWcX1ekRR2rzVNj8C9VtRDzFSDKqhMw=
