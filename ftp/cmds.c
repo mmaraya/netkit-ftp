@@ -1835,7 +1835,7 @@ account(int argc, char *argv[])
 		while (argc > 1) {
 			--argc;
 			++argv;
-			strncat(buf, *argv, sizeof(buf)-strlen(buf));
+			strncat(buf, *argv, sizeof(buf)-1);
 			buf[sizeof(buf)-1] = 0;
 		}
 		ap = buf;
