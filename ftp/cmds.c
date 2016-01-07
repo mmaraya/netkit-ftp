@@ -1654,7 +1654,7 @@ quote1(const char *initial, int argc, char **argv)
 	register int i, len;
 	char buf[BUFSIZ];		/* must be >= sizeof(line) */
 
-	(void) strcpy(buf, initial);
+    snprintf(buf, BUFSIZ, "%s", initial);
 	if (argc > 1) {
 		len = strlen(buf);
 		len += strlen(strcpy(&buf[len], argv[1]));
