@@ -1766,7 +1766,7 @@ confirm(const char *cmd, const char *file)
 		snprintf(lyne, BUFSIZ, "%s %s? ", cmd, file);
 		lineread = readline(lyne);
 		if (!lineread) return 0;
-		strcpy(lyne, lineread);
+		snprintf(lyne, BUFSIZ, "%s", lineread);
 		free(lineread);
 	}
 	else {
