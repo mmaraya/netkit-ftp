@@ -328,7 +328,7 @@ do_settype(const char *thetype)
 	else
 		comret = command("TYPE %s", p->t_mode);
 	if (comret == COMPLETE) {
-		(void) strcpy(typename, p->t_name);
+		snprintf(typename, sizeof(typename), "%s", p->t_name);
 		curtype = type = p->t_type;
 	}
 }
