@@ -370,7 +370,7 @@ doit:
 		strncpy(lm, pl, pm-pl);
 		lm[pm-pl] = 0;
 #endif
-		(void) strcat(restbuf, pe + 1);
+		strncat(restbuf, pe + 1, sizeof(restbuf) - strlen(pe + 1) - 1);
 		if (s == 0) {
 			sgpathp = gpathp;
 			expand(restbuf);
