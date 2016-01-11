@@ -1540,7 +1540,7 @@ gunique(char *local)
 		fprintf(stderr, "local: %s: %s\n", local, strerror(errno));
 		return((char *) 0);
 	}
-	(void) strcpy(new, local);
+	snprintf(new, MAXPATHLEN, "%s", local);
 	cp = new + strlen(new);
 	*cp++ = '.';
 	while (!d) {
