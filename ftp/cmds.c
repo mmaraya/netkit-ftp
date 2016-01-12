@@ -1486,8 +1486,7 @@ shell(const char *arg)
 			namep = theshell;
 		else 
 			namep++;
-		(void) strcpy(shellnam,"-");
-		(void) strcat(shellnam, namep);
+		(void) snprintf(shellnam, sizeof(shellnam), "-%s", namep);
 		if (strcmp(namep, "sh") != 0)
 			shellnam[0] = '+';
 		if (debug) {
