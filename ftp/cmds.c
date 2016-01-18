@@ -2031,6 +2031,7 @@ domap(char *name)
 	for (i=0; i < 9; ++i) {
 		toks[i] = 0;
 		te[i] = NULL;
+		tp[i] = NULL;
 	}
 	while (match && *cp1 && *cp2) {
 		switch (*cp2) {
