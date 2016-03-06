@@ -854,6 +854,7 @@ mget(int argc, char **argv)
 			else {
 				recvrequest("RETR", tp, cp, "w",
 					    tp != cp || !interactive);
+				free(tp);
 			}
 			if (!mflag && fromatty) {
 				ointer = interactive;
