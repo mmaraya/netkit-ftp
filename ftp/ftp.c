@@ -542,7 +542,8 @@ sendrequest(const char *cmd, char *local, char *remote, int printnames)
 		(void) signal(SIGINT, oldintr);
 		if (oldintp)
 			(void) signal(SIGPIPE, oldintp);
-		pclose(fin);
+		if (closefunc != NULL)
+			(*closefunc)(fin);
 		code = -1;
 		return;
 	}
