@@ -540,12 +540,9 @@ sendrequest(const char *cmd, char *local, char *remote, int printnames)
 	}
 	if (initconn()) {
 		(void) signal(SIGINT, oldintr);
-		if (oldintp) {
+		if (oldintp)
 			(void) signal(SIGPIPE, oldintp);
-			pclose(fin);
-		} else {
-			fclose(fin);
-		}
+		pclose(fin);
 		code = -1;
 		return;
 	}
