@@ -1056,6 +1056,7 @@ abort:
 	if (!cpend) {
 		code = -1;
 		(void) signal(SIGINT, oldintr);
+		fclose(din);
 		return;
 	}
 
