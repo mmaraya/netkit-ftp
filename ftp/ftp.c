@@ -905,6 +905,8 @@ recvrequest(const char *cmd,
 				strerror(errno));
 			if (closefunc != NULL)
 				(*closefunc)(fout);
+			if (din != NULL)
+				fclose(din);
 			return;
 		}
 		errno = d = 0;
