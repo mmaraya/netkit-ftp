@@ -970,6 +970,8 @@ done:
 					strerror(errno));
 				if (closefunc != NULL)
 					(*closefunc)(fout);
+				if (din != NULL)
+					fclose(din);
 				return;
 			}
 		}
@@ -1056,7 +1058,8 @@ abort:
 	if (!cpend) {
 		code = -1;
 		(void) signal(SIGINT, oldintr);
-		fclose(din);
+		if (din != NULL)
+			fclose(din);
 		return;
 	}
 
