@@ -1062,6 +1062,8 @@ abort:
 		(void) signal(SIGINT, oldintr);
 		if (din != NULL)
 			fclose(din);
+		if (closefunc != NULL && fout != NULL)
+			(*closefunc)(fout);
 		return;
 	}
 
