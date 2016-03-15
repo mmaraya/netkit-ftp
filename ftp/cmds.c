@@ -648,7 +648,7 @@ static int
 getit(int argc, char *argv[], int restartit, const char *modestr)
 {
 	int loc = 0;
-	char *oldargv1, *oldargv2;
+	char *oldargv1, *oldargv2, tmpbuf[PATH_MAX];
 
 	if (argc == 2) {
 		argc++;
@@ -679,7 +679,7 @@ usage:
 		return (0);
 	}
 	if (loc && mcase) {
-		char *tp = argv[1], *tp2, tmpbuf[PATH_MAX];
+		char *tp = argv[1], *tp2;
 
 		while (*tp && !islower(*tp)) {
 			tp++;
