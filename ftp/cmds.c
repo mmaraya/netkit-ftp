@@ -1523,7 +1523,6 @@ shell(const char *arg)
 void
 user(int argc, char *argv[])
 {
-	char theacct[80];
 	int n, aflag = 0;
 
 	if (argc < 2)
@@ -1541,9 +1540,7 @@ user(int argc, char *argv[])
 	}
 	if (n == CONTINUE) {
 		if (argc < 4) {
-			printf("Account: "); (void) fflush(stdout);
-			fgets(theacct, sizeof(theacct), stdin);
-			argv[3] = theacct; argc++;
+			(void) another(&argc, &argv, "account");
 		}
 		n = command("ACCT %s", argv[3]);
 		aflag++;
