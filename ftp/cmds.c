@@ -2234,7 +2234,8 @@ restart(int argc, char *argv[])
 void
 syst(void)
 {
-	command("SYST");
+	if (command("SYST") != COMPLETE)
+        printf("SYST failed");
 }
 
 void
