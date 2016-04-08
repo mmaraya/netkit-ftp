@@ -1840,7 +1840,8 @@ account(int argc, char *argv[])
 	else {
 		ap = getpass("Account:");
 	}
-	command("ACCT %s", ap);
+	if (command("ACCT %s", ap) != COMPLETE)
+        printf("ACCT failed");
 }
 
 static 
