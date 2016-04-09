@@ -1841,7 +1841,7 @@ account(int argc, char *argv[])
 		ap = getpass("Account:");
 	}
 	if (command("ACCT %s", ap) != COMPLETE)
-        printf("ACCT failed");
+		printf("ACCT failed");
 }
 
 static 
@@ -2236,7 +2236,7 @@ void
 syst(void)
 {
 	if (command("SYST") != COMPLETE)
-        printf("SYST failed");
+		printf("SYST failed");
 }
 
 void
