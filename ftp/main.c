@@ -568,12 +568,13 @@ help(int argc, char *argv[])
 		for (i = 0; i < lines; i++) {
 			for (j = 0; j < columns; j++) {
 				c = cmdtab + j * lines + i;
-				if (c->c_name && (!proxy || c->c_proxy)) {
-					printf("%s", c->c_name);
-				}
-				else if (c->c_name) {
-					for (k=0; k < strlen(c->c_name); k++) {
-						(void) putchar(' ');
+				if (c->c_name) {
+					if (!proxy || c->c_proxy) {
+						printf("%s", c->c_name);
+					} else {
+						for (k=0; k < strlen(c->c_name); k++) {
+							(void) putchar(' ');
+						}
 					}
 				}
 				if (c + lines >= &cmdtab[NCMDS]) {
