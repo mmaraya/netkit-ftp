@@ -276,12 +276,6 @@ matchdir(const char *pattern)
 	register struct dirent *dp;
 	DIR *dirp;
 
-#if 0
-#ifdef	__linux__
-	if (gpath == NULL || *gpath == '\0')
-		gpath = "./";
-#endif
-#endif
 	dirp = opendir((!gpath || !*gpath) ? "./" : gpath);
 	if (dirp == NULL) {
 		if (globbed)
