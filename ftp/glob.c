@@ -278,9 +278,8 @@ matchdir(const char *pattern)
 
 	dirp = opendir((!gpath || !*gpath) ? "./" : gpath);
 	if (dirp == NULL) {
-		if (globbed)
-			return;
-		goto patherr2;
+		globerr = "Bad directory components";
+		return;
 	}
 	if (fstat(dirfd(dirp), &stb) < 0)
 		goto patherr1;
@@ -301,8 +300,6 @@ matchdir(const char *pattern)
 
 patherr1:
 	closedir(dirp);
-patherr2:
-	globerr = "Bad directory components";
 }
 
 static 
