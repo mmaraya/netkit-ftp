@@ -281,11 +281,14 @@ matchdir(const char *pattern)
 		globerr = "Bad directory components";
 		return;
 	}
-	if (fstat(dirfd(dirp), &stb) < 0)
-		goto patherr1;
+	if (fstat(dirfd(dirp), &stb) < 0) {
+		closedir(dirp);
+		return;	
+	}
 	if (!isdir(stb)) {
 		errno = ENOTDIR;
-		goto patherr1;
+		closedir(dirp);
+		return;	
 	}
 	while ((dp = readdir(dirp)) != NULL) {
 		if (dp->d_ino == 0)
@@ -297,9 +300,6 @@ matchdir(const char *pattern)
 	}
 	closedir(dirp);
 	return;
-
-patherr1:
-	closedir(dirp);
 }
 
 static 
