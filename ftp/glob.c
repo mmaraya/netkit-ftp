@@ -279,26 +279,26 @@ matchdir(const char *pattern)
 	dirp = opendir((!gpath || !*gpath) ? "./" : gpath);
 	if (dirp == NULL) {
 		globerr = "Bad directory components";
-		return;
-	}
-	if (fstat(dirfd(dirp), &stb) < 0) {
-		closedir(dirp);
-		return;	
-	}
-	if (!isdir(stb)) {
-		errno = ENOTDIR;
-		closedir(dirp);
-		return;	
-	}
-	while ((dp = readdir(dirp)) != NULL) {
-		if (dp->d_ino == 0)
-			continue;
-		if (match(dp->d_name, pattern)) {
-			Gcat(gpath, dp->d_name);
-			globcnt++;
+	} else {
+		if (fstat(dirfd(dirp), &stb) < 0) {
+			closedir(dirp);
+			return;
 		}
+		if (!isdir(stb)) {
+			errno = ENOTDIR;
+			closedir(dirp);
+			return;
+		}
+		while ((dp = readdir(dirp)) != NULL) {
+			if (dp->d_ino == 0)
+				continue;
+			if (match(dp->d_name, pattern)) {
+				Gcat(gpath, dp->d_name);
+				globcnt++;
+			}
+		}
+	    closedir(dirp);
 	}
-	closedir(dirp);
 	return;
 }
 
