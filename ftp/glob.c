@@ -276,7 +276,8 @@ matchdir(const char *pattern)
 	register struct dirent *dp;
 	DIR *dirp;
 
-	dirp = opendir((!gpath || !*gpath) ? "./" : gpath);
+	char *path = (!gpath || !*gpath) ? "./" : gpath;
+	dirp = opendir(path);
 	if (dirp == NULL) {
 		globerr = "Bad directory components";
 	} else {
@@ -293,7 +294,7 @@ matchdir(const char *pattern)
 			if (dp->d_ino == 0)
 				continue;
 			if (match(dp->d_name, pattern)) {
-				Gcat(gpath, dp->d_name);
+				Gcat(path, dp->d_name);
 				globcnt++;
 			}
 		}
