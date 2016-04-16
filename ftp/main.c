@@ -581,10 +581,12 @@ help(int argc, char *argv[])
 					printf("\n");
 					break;
 				}
-				w = strlen(c->c_name);
-				while (w < width) {
-					w = (w + 8) &~ 7;
-					(void) putchar('\t');
+				if (c->c_name) {
+					w = strlen(c->c_name);
+					while (w < width) {
+						w = (w + 8) &~ 7;
+						(void) putchar('\t');
+					}
 				}
 			}
 		}
