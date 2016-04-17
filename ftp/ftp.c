@@ -780,7 +780,7 @@ recvrequest(const char *cmd,
 		return;
 	}
 	oldintr = signal(SIGINT, abortrecv);
-	if (strcmp(local, "-") && *local != '|') {
+	if (local && strcmp(local, "-") && *local != '|') {
 		if (access(local, W_OK) < 0) {
 			char *dir = rindex(local, '/');
 
@@ -861,7 +861,7 @@ recvrequest(const char *cmd,
 	din = dataconn("r");
 	if (din == NULL)
 		goto abort;
-	if (strcmp(local, "-") == 0)
+	if (local && strcmp(local, "-") == 0)
 		fout = stdout;
 	else if (*local == '|') {
 		oldintp = signal(SIGPIPE, SIG_IGN);
