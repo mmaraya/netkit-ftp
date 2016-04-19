@@ -508,7 +508,7 @@ sendrequest(const char *cmd, char *local, char *remote, int printnames)
 	oldintr = signal(SIGINT, abortsend);
 	if (local && strcmp(local, "-") == 0)
 		fin = stdin;
-	else if (*local == '|') {
+	else if (local && *local == '|') {
 		oldintp = signal(SIGPIPE,SIG_IGN);
 		fin = popen(local + 1, "r");
 		if (fin == NULL) {
