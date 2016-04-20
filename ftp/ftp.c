@@ -863,7 +863,7 @@ recvrequest(const char *cmd,
 		goto abort;
 	if (local && strcmp(local, "-") == 0)
 		fout = stdout;
-	else if (*local == '|') {
+	else if (local && *local == '|') {
 		oldintp = signal(SIGPIPE, SIG_IGN);
 		fout = popen(local + 1, "w");
 		if (fout == NULL) {
