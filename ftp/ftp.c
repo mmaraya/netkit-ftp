@@ -506,36 +506,36 @@ sendrequest(const char *cmd, char *local, char *remote, int printnames)
 		return;
 	}
 	oldintr = signal(SIGINT, abortsend);
-	if (local && strcmp(local, "-") == 0)
-		fin = stdin;
-	else if (local && *local == '|') {
-		oldintp = signal(SIGPIPE,SIG_IGN);
-		fin = popen(local + 1, "r");
-		if (fin == NULL) {
-			perror(local + 1);
-			(void) signal(SIGINT, oldintr);
-			(void) signal(SIGPIPE, oldintp);
-			code = -1;
-			return;
-		}
-		closefunc = pclose;
-	} else {
-		fin = fopen(local, "r");
-		if (fin == NULL) {
-			fprintf(stderr, "local: %s: %s\n", local,
-				strerror(errno));
-			(void) signal(SIGINT, oldintr);
-			code = -1;
-			return;
-		}
-		closefunc = fclose;
-		if (fstat(fileno(fin), &st) < 0 ||
-		    (st.st_mode&S_IFMT) != S_IFREG) {
-			fprintf(stdout, "%s: not a plain file.\n", local);
-			(void) signal(SIGINT, oldintr);
-			fclose(fin);
-			code = -1;
-			return;
+	if (local) {
+		if (strcmp(local, "-") == 0) {
+			fin = stdin;
+		} else if (*local == '|') {
+			oldintp = signal(SIGPIPE,SIG_IGN);
+			fin = popen(local + 1, "r");
+			if (fin == NULL) {
+				perror(local + 1);
+				(void) signal(SIGINT, oldintr);
+				(void) signal(SIGPIPE, oldintp);
+				code = -1;
+				return;
+			}
+			closefunc = pclose;
+		} else {
+			fin = fopen(local, "r");
+			if (fin == NULL) {
+				fprintf(stderr, "local: %s: %s\n", local, strerror(errno));
+				(void) signal(SIGINT, oldintr);
+				code = -1;
+				return;
+			}
+			closefunc = fclose;
+			if (fstat(fileno(fin), &st) < 0 || (st.st_mode&S_IFMT) != S_IFREG) {
+				fprintf(stdout, "%s: not a plain file.\n", local);
+				(void) signal(SIGINT, oldintr);
+				fclose(fin);
+				code = -1;
+				return;
+			}
 		}
 	}
 	if (initconn()) {
