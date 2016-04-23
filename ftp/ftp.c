@@ -466,7 +466,7 @@ sendrequest(const char *cmd, char *local, char *remote, int printnames)
 	struct stat st;
 	struct timeval start, stop;
 	register int c, d;
-	FILE *volatile fin, *volatile dout = 0;
+	FILE *volatile fin = 0, *volatile dout = 0;
 	int (*volatile closefunc)(FILE *);
 	void (*volatile oldintr)(int);
 	void (*volatile oldintp)(int);
