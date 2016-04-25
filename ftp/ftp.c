@@ -859,25 +859,23 @@ recvrequest(const char *cmd,
 	din = dataconn("r");
 	if (din == NULL)
 		goto abort;
-	if (local) {
-		if (strcmp(local, "-") == 0) {
-			fout = stdout;
-		} else if (*local == '|') {
-			oldintp = signal(SIGPIPE, SIG_IGN);
-			fout = popen(local + 1, "w");
-			if (fout == NULL) {
-				perror(local+1);
-				goto abort;
-			}
-			closefunc = pclose;
-		} else {
-			fout = fopen(local, lmode);
-			if (fout == NULL) {
-				fprintf(stderr, "local: %s: %s\n", local, strerror(errno));
-				goto abort;
-			}
-			closefunc = fclose;
+	if (strcmp(local, "-") == 0) {
+		fout = stdout;
+	} else if (*local == '|') {
+		oldintp = signal(SIGPIPE, SIG_IGN);
+		fout = popen(local + 1, "w");
+		if (fout == NULL) {
+			perror(local+1);
+			goto abort;
 		}
+		closefunc = pclose;
+	} else {
+		fout = fopen(local, lmode);
+		if (fout == NULL) {
+			fprintf(stderr, "local: %s: %s\n", local, strerror(errno));
+			goto abort;
+		}
+		closefunc = fclose;
 	}
 	if (fstat(fileno(fout), &st) < 0 || st.st_blksize == 0)
 		st.st_blksize = BUFSIZ;
