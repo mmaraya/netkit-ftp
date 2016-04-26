@@ -474,8 +474,11 @@ sendrequest(const char *cmd, char *local, char *remote, int printnames)
 	char buf[BUFSIZ], *bufp;
 	const char *volatile lmode;
 
+	if (local == NULL) {
+		goto abort;
+	}
 	if (verbose && printnames) {
-		if (local && *local != '-')
+		if (*local != '-')
 			printf("local: %s ", local);
 		if (remote)
 			printf("remote: %s\n", remote);
@@ -749,9 +752,12 @@ recvrequest(const char *cmd,
 	struct timeval start, stop;
 	struct stat st;
 
+	if (local == NULL) {
+		goto abort;
+	}
 	is_retr = strcmp(cmd, "RETR") == 0;
 	if (is_retr && verbose && printnames) {
-		if (local && *local != '-')
+		if (*local != '-')
 			printf("local: %s ", local);
 		if (remote)
 			printf("remote: %s\n", remote);
@@ -778,7 +784,7 @@ recvrequest(const char *cmd,
 		return;
 	}
 	oldintr = signal(SIGINT, abortrecv);
-	if (local && strcmp(local, "-") && *local != '|') {
+	if (strcmp(local, "-") && *local != '|') {
 		if (access(local, W_OK) < 0) {
 			char *dir = rindex(local, '/');
 
