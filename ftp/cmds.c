@@ -920,7 +920,10 @@ remglob(char *argv[], int doswitch)
 		}
 		while (*++argv != NULL) {
 			int	dupfd = dup(fd);
-
+			if (dupfd < 0) {
+				printf("Error duplicating file descriptror: %s", strerror(errno));
+				return NULL;
+			}
 			recvrequest ("NLST", temp, *argv, "a", 0);
 			if (!checkglob(dupfd, *argv)) {
 				badglob = 1;
