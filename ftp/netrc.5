@@ -38,11 +38,16 @@
 .Os "Linux NetKit (0.17)"
 .Sh NAME
 .Nm netrc, .netrc
-.Nd user configuration for ftp
+.Nd user configuration for ftp and http user auth
 .Sh DESCRIPTION
 This file contains configuration and autologin information for the 
 File Transfer Protocol client 
 .Xr ftp 1 .
+.Pp
+Some other clients (e.g.,
+.Xr curl 1 and
+.Xr wget 1 )
+can use the .netrc file for HTTP user authentication.
 .Pp
 The
 .Pa .netrc
@@ -142,4 +147,6 @@ auto-login process.
 .El
 .Sh SEE ALSO
 .Xr ftp 1 ,
-.Xr ftpd 8
+.Xr ftpd 8 ,
+.Xr curl 1 ,
+.Xr wget 1
