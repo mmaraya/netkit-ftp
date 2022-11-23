@@ -1,7 +1,7 @@
 ![netkit-ftp logo](icon.png "netkit-ftp") netkit-ftp [![Build Status](https://travis-ci.org/mmaraya/netkit-ftp.png?branch=master)](https://travis-ci.org/mmaraya/netkit-ftp) [![Coverity Scan Build Status](https://scan.coverity.com/projects/7236/badge.svg)](https://scan.coverity.com/projects/mmaraya-netkit-ftp)
 ==================================================
 
-netkit-ftp is the original file transfer client program for Linux. While netkit-ftp is no longer maintained, it is still included in various Linux distributions and has the dubious distinction of being the [riskiest](https://twitter.com/MikeMaraya/status/673568298148212736) open source application according to the Linux Foundation. The purpose of this project is to identify and mitigate the weaknesses in netkit-ftp and update Linux distributions that still carry it. If you are looking for a modern and safer FTP client, consider [lftp](http://lftp.yar.ru).
+netkit-ftp is the original file transfer client program for Linux. While netkit-ftp is no longer maintained, it is still included in various Linux distributions and has the dubious distinction of being the [riskiest](https://www.ida.org/-/media/feature/publications/o/op/open-source-software-projects-needing-security-investments/d-5459.ashx#page=71) open source application according to the Linux Foundation. The purpose of this project is to identify and mitigate the weaknesses in netkit-ftp and update Linux distributions that still carry it. If you are looking for a modern and safer FTP client, consider [lftp](http://lftp.yar.ru).
 
 The original README for netkit-ftp 0.17 can be found [here](README).
 
